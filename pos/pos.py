@@ -9,6 +9,7 @@ Pos - a class representing a point of sale system whose data has been synced and
 """
 
 import requests
+import employee
 
 class Pos:
     _location_base = 'https://api.omnivore.io/0.1/locations/'
@@ -20,4 +21,6 @@ class Pos:
     def employees(self):
         req = self._location + 'employees'
         r = requests.get(req, headers=self._headers)
-        return r.text
+        #        print r.json()
+
+        return
