@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 __author__ = 'rhvonlehe'
 
+import sys
+sys.path.append('../')
 from pos import Pos
 
 def main():
