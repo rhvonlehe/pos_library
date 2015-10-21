@@ -6,12 +6,19 @@ omnivore API wrapper
 
 import requests
 
-__version__ = '0.1'
-__location_base__ = 'https://api.omnivore.io/' + __version__ + '/locations/'
+
+#
+#class Config:
+#   """A class containing the configuration of the omnivore site"""
+#
 
 
-class Config:
-    """A class containing the configuration of the omnivore site"""
+class Pos:
+
+    # TODO: possibly move some of this to Config class
+    #
+    _version = '0.1'
+    _location_base = 'https://api.omnivore.io/' + _version + '/locations/'
 
     API_PATHS = {'employees': 'employees',
                  'revenue_centers': 'revenue_centers',
@@ -19,16 +26,17 @@ class Config:
                  'order_types': 'order_types',
                  'tickets': 'tickets'}
 
-
-
-class Pos:
     def __init__(self, api_key, location):
         self._api_key = api_key
-        self._location = __location_base__ + location + '/'
+        self._location = self._location_base + location + '/'
         self._headers={'Api-Key': self._api_key}
 
+    def _get_uri(self, resource):
+        return self._location + self.API_PATHS[resource]
+
+
     def employees(self):
-        req = self._location + Config.API_PATHS['employees']
+        req = self._get_uri('employees')
         print req
         r = requests.get(req, headers=self._headers)
         #        print r.json()
