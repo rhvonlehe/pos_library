@@ -4,7 +4,9 @@ __author__ = 'rhvonlehe'
 omnivore API wrapper
 """
 
-import requests
+#from restnavigator import Navigator
+
+import requests # TODO - remove
 #import json # TODO - remove
 
 

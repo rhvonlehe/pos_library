@@ -7,5 +7,9 @@ Employee - a class that models an employee in the POS system
 
 """
 
-class Employee:
-    def __init__(self,
+from hal_resource import HalResource
+
+class Employee(HalResource):
+    def __init__(self, resource):
+        pass
+
