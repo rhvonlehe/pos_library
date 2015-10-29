@@ -19,4 +19,7 @@ class Employee:
     def last_name(self):
         return self._state['last_name']
 
+    def id(self):
+        return self._state['id']
+
 

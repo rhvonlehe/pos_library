@@ -14,3 +14,5 @@ class RevenueCenter():
     def name(self):
         return self._state['name']
 
+    def id(self):
+        return self._state['id']

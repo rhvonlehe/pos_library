@@ -17,6 +17,8 @@ def main():
     for rev in revenue_center_list:
         print rev.name()
 
+    my_pos.create_ticket(employee_list[0], 'KxiAaip5', revenue_center_list[0], 'jLiyniEb', 1, 'auto_ticket')
+
 
 if __name__ == "__main__":
     main()
