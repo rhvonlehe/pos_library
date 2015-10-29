@@ -9,7 +9,7 @@ Employee - a class that models an employee in the POS system
 
 #from hal_resource import HalResource ## TODO remove
 
-class Employee():
+class Employee:
     def __init__(self, state):
         self._state = state
 

@@ -6,6 +6,7 @@ omnivore API wrapper
 
 from restnavigator import Navigator
 from employee import Employee
+from revenue_center import RevenueCenter
 
 import requests # TODO - remove
 #import json # TODO - remove
@@ -48,10 +49,15 @@ class Pos:
 
     def revenue_centers(self):
         revs = self._navigator['revenue_centers']
-        print revs()
-        print revs['revenue_centers'][0].state
+        revenue_center_list = []
 
-    def employees1(self):
+        for index in range(0, revs()['count']):
+            state = revs['revenue_centers'][index].state
+            revenue_center_list += [RevenueCenter(state)]
+
+        return revenue_center_list
+
+    def employees(self):
         emps = self._navigator['employees']
         employee_list = []
 
@@ -59,35 +65,37 @@ class Pos:
             employee_state = emps['employees'][index].state
             employee_list += [Employee(employee_state)]
 
-
-
-        print
-        print emps()
-        print emps['employees'][0].state
-        print emps['employees'][0].state['first_name']
-        print
-
         return employee_list
 
-
-    def employees(self):
-        # req = self._get_url('employees')
-        # resp = requests.get(req, headers=self._headers)
+        # TODO - remove below
         #
-        # resp = resp.json()
-
-        resp = self._get_json_content('employees')
-
-        print resp
-        # embedded = json['_embedded']
-        # print embedded
-        #print embedded['employees']
-        # for emp in embedded['_employees']:
-        #     print emp
+        # print
+        # print emps()
+        # print emps['employees'][0].state
+        # print emps['employees'][0].state['first_name']
+        # print
+        #
 
 
-        # print json['count']
-        # print json['_links']
-        # print json['_embedded']
-
-        return #r.text
+    # TODO - remove below
+    # def employees(self):
+    #     # req = self._get_url('employees')
+    #     # resp = requests.get(req, headers=self._headers)
+    #     #
+    #     # resp = resp.json()
+    #
+    #     resp = self._get_json_content('employees')
+    #
+    #     print resp
+    #     # embedded = json['_embedded']
+    #     # print embedded
+    #     #print embedded['employees']
+    #     # for emp in embedded['_employees']:
+    #     #     print emp
+    #
+    #
+    #     # print json['count']
+    #     # print json['_links']
+    #     # print json['_embedded']
+    #
+    #     return #r.text
