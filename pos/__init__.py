@@ -4,7 +4,8 @@ __author__ = 'rhvonlehe'
 omnivore API wrapper
 """
 
-#from restnavigator import Navigator
+from restnavigator import Navigator
+from employee import Employee
 
 import requests # TODO - remove
 #import json # TODO - remove
@@ -34,6 +35,7 @@ class Pos:
         self._api_key = api_key
         self._url_base = self._location_base + location + '/'
         self._headers={'Api-Key': self._api_key}
+        self._navigator = Navigator.hal(self._url_base, headers=self._headers)
 
     def _get_url(self, resource):
         return self._url_base + self.API_PATHS[resource]
@@ -43,6 +45,30 @@ class Pos:
         resp = requests.get(req, headers=self._headers)
 
         return resp.json()
+
+    def revenue_centers(self):
+        revs = self._navigator['revenue_centers']
+        print revs()
+        print revs['revenue_centers'][0].state
+
+    def employees1(self):
+        emps = self._navigator['employees']
+        employee_list = []
+
+        for index in range(0, emps()['count']):
+            employee_state = emps['employees'][index].state
+            employee_list += [Employee(employee_state)]
+
+
+
+        print
+        print emps()
+        print emps['employees'][0].state
+        print emps['employees'][0].state['first_name']
+        print
+
+        return employee_list
+
 
     def employees(self):
         # req = self._get_url('employees')
