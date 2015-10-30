@@ -8,9 +8,9 @@ from restnavigator import Navigator
 from employee import Employee
 from revenue_center import RevenueCenter
 from order_type import OrderType
+from table import Table
 
 #import requests # TODO - remove
-#import json # TODO - remove
 
 
 # TODO - remove
@@ -50,7 +50,7 @@ class Pos:
 
         return revenue_center_list
 
-    def employees(self, **kwargs):
+    def employees(self):
         emps = self._navigator['employees']
         employee_list = []
 
@@ -70,6 +70,17 @@ class Pos:
 
         return order_type_list
 
+    def tables(self):
+        tabs = self._navigator['tables']
+        table_list = []
+
+        for index in range(0, tabs()['count']):
+            state = tabs['tables'][index].state
+            table_list += [Table(state)]
+
+        return table_list
+
+
     def create_ticket(self, employee, order_type, revenue_center,
                       table, guest_count, name, auto_send = True):
         print self._navigator['tickets']
@@ -82,7 +93,7 @@ class Pos:
         print self._navigator['tickets'].create({'employee': employee.id(),
                                                  'order_type': order_type.id(),
                                                  'revenue_center': revenue_center.id(),
-                                                 'table': table,
+                                                 'table': table.id(),
                                                  'guest_count' : guest_count,
                                                  'name' : name,
                                                  'auto_send': auto_send})

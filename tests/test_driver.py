@@ -22,8 +22,15 @@ def main():
     for ord in order_type_list:
         print ord.name()
 
+    table_list = my_pos.tables()
+    for tab in table_list:
+        print tab.name()
 
-    my_pos.create_ticket(employee_list[0], order_type_list[0], revenue_center_list[0], 'jLiyniEb', 1, 'auto_ticket')
+
+
+    my_pos.create_ticket(employee_list[0], order_type_list[0],
+                         revenue_center_list[0], table_list[0],
+                         1, 'auto_ticket')
 
 
 if __name__ == "__main__":
