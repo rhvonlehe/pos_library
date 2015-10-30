@@ -67,12 +67,12 @@ class Pos:
 
     def create_ticket(self, employee, order_type, revenue_center,
                       table, guest_count, name, auto_send = True):
-        print self._navigator['tickets']
-        print employee.id()
-        print order_type.id()
-        print revenue_center.id()
-        print table
-        print name
+        # print self._navigator['tickets']
+        # print employee.id()
+        # print order_type.id()
+        # print revenue_center.id()
+        # print table
+        # print name
 
         print self._navigator['tickets'].create({'employee': employee.id(),
                                                  'order_type': order_type.id(),
