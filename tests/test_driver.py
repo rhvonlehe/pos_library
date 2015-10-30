@@ -10,6 +10,7 @@ def main():
 
     employee_list = my_pos.employees()
     for emp in employee_list:
+        print emp.id()
         print emp.first_name()
 
     print
@@ -17,7 +18,12 @@ def main():
     for rev in revenue_center_list:
         print rev.name()
 
-    my_pos.create_ticket(employee_list[0], 'KxiAaip5', revenue_center_list[0], 'jLiyniEb', 1, 'auto_ticket')
+    order_type_list = my_pos.order_types()
+    for ord in order_type_list:
+        print ord.name()
+
+
+    my_pos.create_ticket(employee_list[0], order_type_list[0], revenue_center_list[0], 'jLiyniEb', 1, 'auto_ticket')
 
 
 if __name__ == "__main__":

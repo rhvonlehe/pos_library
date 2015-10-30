@@ -7,12 +7,13 @@ RevenueCenter - a class that models a revenue_center in the POS system
 
 """
 
-class RevenueCenter():
-    def __init__(self, state):
-        self._state = state
+from identifiable import Identifiable
+
+class RevenueCenter(Identifiable):
+
+    def default(self):
+        return self._state['default']
 
     def name(self):
         return self._state['name']
 
-    def id(self):
-        return self._state['id']

@@ -7,11 +7,12 @@ Employee - a class that models an employee in the POS system
 
 """
 
-#from hal_resource import HalResource ## TODO remove
+from identifiable import Identifiable
 
-class Employee:
-    def __init__(self, state):
-        self._state = state
+class Employee(Identifiable):
+
+    def check_name(self):
+        return self._state['check_name']
 
     def first_name(self):
         return self._state['first_name']
@@ -19,7 +20,6 @@ class Employee:
     def last_name(self):
         return self._state['last_name']
 
-    def id(self):
-        return self._state['id']
-
+    def login(self):
+        return self._state['login']
 
